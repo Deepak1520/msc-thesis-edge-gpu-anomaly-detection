@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: GWDG GPU Node Telemetry Dataset for Observability-Aware Early Warning of GPU Detachment Failures (2025-2026)
+version: 1.0.0
+doi: 10.5281/zenodo.19052367
+date-released: 2026-03-15
+license: CC-BY-4.0
+
+authors:
+  - family-names: Bidollahkhani
+    given-names: Michael
+    affiliation: University of Göttingen
+
+  - family-names: Nordsiek
+    given-names: Freja
+    affiliation: GWDG
+
+  - family-names: Kunkel
+    given-names: Julian M.
+    affiliation: GWDG; University of Göttingen

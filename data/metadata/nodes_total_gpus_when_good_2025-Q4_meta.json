@@ -1,0 +1,27 @@
+{
+  "inputFile": "nodes_total_gpus_when_good_2025-Q4.csv",
+  "outputFile": "nodes_total_gpus_when_good_2025-Q4_tidy.csv.bz2",
+  "inputType": "node-wide-totals",
+  "timeColumn": "Time",
+  "keptMetrics": [
+    "nodes_total_gpus_when_good"
+  ],
+  "keptColumnCount": 22,
+  "schema": {
+    "timeUtc": "string (YYYY-MM-DD HH:MM:SS)",
+    "node": "string",
+    "metric": "string",
+    "value": "float",
+    "gpu": "string",
+    "device": "string",
+    "uuid": "string",
+    "job": "string",
+    "instance": "string",
+    "modelName": "string",
+    "driverVersion": "string"
+  },
+  "notes": [
+    "This file type is a wide node table, not a Prometheus label-heavy export.",
+    "Each node column is emitted as metric=nodes_total_gpus_when_good."
+  ]
+}

@@ -1,0 +1,70 @@
+node,incidentDate,incidentDate2,description,category,beforeHours,afterHours,collectStart,collectEnd,windowTotalHours
+node_38972d8a27de,11 Jul 2025,,gpu problem,gpu error/problem,24,2,2025-07-10 00:00:00,2025-07-11 02:00:00,26
+node_473ac80c8602,19 Jan 2025,,gpu problem,gpu error/problem,24,2,2025-01-18 00:00:00,2025-01-19 02:00:00,26
+node_2cad8ec37e1d,28 Jan 2025,,gpu error,gpu error/problem,24,2,2025-01-27 00:00:00,2025-01-28 02:00:00,26
+node_15e3440a80d0,07 Jan 2025,,gpu ecc problem,gpu ecc,24,2,2025-01-06 00:00:00,2025-01-07 02:00:00,26
+node_15e3440a80d0,14 Jan 2025,,gpu ecc problem,gpu ecc,24,2,2025-01-13 00:00:00,2025-01-14 02:00:00,26
+node_0876e5fac0c8,22 Oct 2025,,gpu fell off bus,gpu fell off bus,24,2,2025-10-21 00:00:00,2025-10-22 02:00:00,26
+node_2b08d249c0ba,10 Feb 2025,,gpu error,gpu error/problem,24,2,2025-02-09 00:00:00,2025-02-10 02:00:00,26
+node_b1b91a387252,09 Jan 2026,,lost gpu,gpu lost,24,2,2026-01-08 00:00:00,2026-01-09 02:00:00,26
+node_b1b91a387252,13 Jan 2026,,lost gpu,gpu lost,24,2,2026-01-12 00:00:00,2026-01-13 02:00:00,26
+node_b1b91a387252,19 Jan 2026,,lost gpu,gpu lost,24,2,2026-01-18 00:00:00,2026-01-19 02:00:00,26
+node_df3724dfcace,21 Mar 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-03-20 00:00:00,2025-03-21 02:00:00,26
+node_6a5ebc855306,17 Feb 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-02-16 00:00:00,2025-02-17 02:00:00,26
+node_6a5ebc855306,19 Mar 2025,,gpu problem,gpu error/problem,24,2,2025-03-18 00:00:00,2025-03-19 02:00:00,26
+node_6a5ebc855306,21 Mar 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-03-20 00:00:00,2025-03-21 02:00:00,26
+node_6a5ebc855306,03 Jul 2025,,gpu problem,gpu error/problem,24,2,2025-07-02 00:00:00,2025-07-03 02:00:00,26
+node_6a5ebc855306,12 Sep 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-09-11 00:00:00,2025-09-12 02:00:00,26
+node_62a6cb9d8856,21 Mar 2025,,gpu problem,gpu error/problem,24,2,2025-03-20 00:00:00,2025-03-21 02:00:00,26
+node_d4119f476626,21 Mar 2025,,gpu problem,gpu error/problem,24,2,2025-03-20 00:00:00,2025-03-21 02:00:00,26
+node_039ab2df8a6a,21 Mar 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-03-20 00:00:00,2025-03-21 02:00:00,26
+node_039ab2df8a6a,12 Jun 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-06-11 00:00:00,2025-06-12 02:00:00,26
+node_039ab2df8a6a,19 Jan 2026,,gpus fell off bus,gpu fell off bus,24,2,2026-01-18 00:00:00,2026-01-19 02:00:00,26
+node_95799a17101c,14 Jan 2025,,gpu problem,gpu error/problem,24,2,2025-01-13 00:00:00,2025-01-14 02:00:00,26
+node_95799a17101c,15 Jan 2025,,gpu problem,gpu error/problem,24,2,2025-01-14 00:00:00,2025-01-15 02:00:00,26
+node_95799a17101c,16 Jan 2025,,gpu problem,gpu error/problem,24,2,2025-01-15 00:00:00,2025-01-16 02:00:00,26
+node_95799a17101c,03 Jul 2025,,gpu error,gpu error/problem,24,2,2025-07-02 00:00:00,2025-07-03 02:00:00,26
+node_95799a17101c,29 Sep 2025,,gpu problem,gpu error/problem,24,2,2025-09-28 00:00:00,2025-09-29 02:00:00,26
+node_95799a17101c,02 Oct 2025,,gpus unknown error,gpu unknown,24,2,2025-10-01 00:00:00,2025-10-02 02:00:00,26
+node_95799a17101c,10 Oct 2025,,gpu problem,gpu error/problem,24,2,2025-10-09 00:00:00,2025-10-10 02:00:00,26
+node_95799a17101c,11 Oct 2025,,gpus uncooperative,gpu error/problem,24,2,2025-10-10 00:00:00,2025-10-11 02:00:00,26
+node_95799a17101c,10 Jan 2026,,gpus fell of bus,gpu fell off bus,24,2,2026-01-09 00:00:00,2026-01-10 02:00:00,26
+node_95799a17101c,10 Feb 2026,,gpus unknown error,gpu unknown,24,2,2026-02-09 00:00:00,2026-02-10 02:00:00,26
+node_95799a17101c,12 Feb 2026,,gpus unknown error,gpu unknown,24,2,2026-02-11 00:00:00,2026-02-12 02:00:00,26
+node_ada68b80182e,11 Jan 2025,,gpu problem,gpu error/problem,24,2,2025-01-10 00:00:00,2025-01-11 02:00:00,26
+node_ada68b80182e,12 Jan 2025,,gpu problem,gpu error/problem,24,2,2025-01-11 00:00:00,2025-01-12 02:00:00,26
+node_ada68b80182e,07 Feb 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-02-06 00:00:00,2025-02-07 02:00:00,26
+node_ada68b80182e,17 Feb 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-02-16 00:00:00,2025-02-17 02:00:00,26
+node_ada68b80182e,14 Mar 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-03-13 00:00:00,2025-03-14 02:00:00,26
+node_ada68b80182e,19 Mar 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-03-18 00:00:00,2025-03-19 02:00:00,26
+node_ada68b80182e,21 Mar 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-03-20 00:00:00,2025-03-21 02:00:00,26
+node_ada68b80182e,27 Apr 2025,,gpus unknown error,gpu unknown,24,2,2025-04-26 00:00:00,2025-04-27 02:00:00,26
+node_ada68b80182e,11 Jun 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-06-10 00:00:00,2025-06-11 02:00:00,26
+node_ada68b80182e,24 Jun 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-06-23 00:00:00,2025-06-24 02:00:00,26
+node_ada68b80182e,29 Sep 2025,,gpu problem,gpu error/problem,24,2,2025-09-28 00:00:00,2025-09-29 02:00:00,26
+node_ada68b80182e,10 Oct 2025,,gpu problem,gpu error/problem,24,2,2025-10-09 00:00:00,2025-10-10 02:00:00,26
+node_ada68b80182e,21 Oct 2025,,gpus failed,gpu failed,24,2,2025-10-20 00:00:00,2025-10-21 02:00:00,26
+node_ada68b80182e,06 Feb 2026,,gpus failed,gpu failed,24,2,2026-02-05 00:00:00,2026-02-06 02:00:00,26
+node_ada68b80182e,11 Feb 2026,,gpus unknown error,gpu unknown,24,2,2026-02-10 00:00:00,2026-02-11 02:00:00,26
+node_eb787fe5e4fa,07 May 2025,,gpu error,gpu error/problem,24,2,2025-05-06 00:00:00,2025-05-07 02:00:00,26
+node_82d89aec502a,04 Jul 2025,,gpu problem,gpu error/problem,24,2,2025-07-03 00:00:00,2025-07-04 02:00:00,26
+node_82d89aec502a,06 Jul 2025,,gpu problem,gpu error/problem,24,2,2025-07-05 00:00:00,2025-07-06 02:00:00,26
+node_d66992a09544,10 Feb 2025,,gpu error,gpu error/problem,24,2,2025-02-09 00:00:00,2025-02-10 02:00:00,26
+node_c1c418ff5f95,27 Jan 2025,,gpu error,gpu error/problem,24,2,2025-01-26 00:00:00,2025-01-27 02:00:00,26
+node_a4bc1d905d62,19 Jan 2026,,gpus fell off bus,gpu fell off bus,24,2,2026-01-18 00:00:00,2026-01-19 02:00:00,26
+node_b33671ad48fb,10 Feb 2025,,gpu error,gpu error/problem,24,2,2025-02-09 00:00:00,2025-02-10 02:00:00,26
+node_39a26f4a5528,27 Jan 2025,,gpu error,gpu error/problem,24,2,2025-01-26 00:00:00,2025-01-27 02:00:00,26
+node_d603d0ec5d69,26 Apr 2025,,gpus error,gpu error/problem,24,2,2025-04-25 00:00:00,2025-04-26 02:00:00,26
+node_dfc60a085f94,26 Apr 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-04-25 00:00:00,2025-04-26 02:00:00,26
+node_dfc60a085f94,20 May 2025,,gpu fell off bus,gpu fell off bus,24,2,2025-05-19 00:00:00,2025-05-20 02:00:00,26
+node_dfc60a085f94,12 Sep 2025,,gpu fell off bus,gpu fell off bus,24,2,2025-09-11 00:00:00,2025-09-12 02:00:00,26
+node_484a8d060485,26 Apr 2025,,gpus error,gpu error/problem,24,2,2025-04-25 00:00:00,2025-04-26 02:00:00,26
+node_484a8d060485,14 Jun 2025,,gpu timeout,gpu timeout,24,2,2025-06-13 00:00:00,2025-06-14 02:00:00,26
+node_1a061e79b6d1,12 Jun 2025,,gpus error,gpu error/problem,24,2,2025-06-11 00:00:00,2025-06-12 02:00:00,26
+node_1a061e79b6d1,12 Sep 2025,,unable to determine gpu handle,gpu handle error,24,2,2025-09-11 00:00:00,2025-09-12 02:00:00,26
+node_1a061e79b6d1,10 Oct 2025,,gpu problem,gpu error/problem,24,2,2025-10-09 00:00:00,2025-10-10 02:00:00,26
+node_2348d3608e24,14 Mar 2025,,gpu error,gpu error/problem,24,2,2025-03-13 00:00:00,2025-03-14 02:00:00,26
+node_2348d3608e24,20 May 2025,,gpu fell off bus,gpu fell off bus,24,2,2025-05-19 00:00:00,2025-05-20 02:00:00,26
+node_2348d3608e24,13 Jul 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-07-12 00:00:00,2025-07-13 02:00:00,26
+node_2348d3608e24,12 Sep 2025,,gpus fell off bus,gpu fell off bus,24,2,2025-09-11 00:00:00,2025-09-12 02:00:00,26
+node_2348d3608e24,22 Jan 2026,,gpus fell off bus,gpu fell off bus,24,2,2026-01-21 00:00:00,2026-01-22 02:00:00,26
