@@ -1,1 +1,4 @@
-data/telemetry/*.csv
+data/*
+!data/docs/
+data/docs/*
+!data/docs/README.md
