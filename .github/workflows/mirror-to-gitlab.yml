@@ -13,5 +13,5 @@ jobs:
       - name: Push to GitLab
         run: |
           git remote add gitlab https://oauth2:${{ secrets.GITLAB_TOKEN }}@gitlab.gwdg.de/deepak.budha/msc-thesis-edge-gpu-anomaly-detection.git
-          git push gitlab --all
-          git push gitlab --tags
+          git push gitlab --all --force
+          git push gitlab --tags --force
