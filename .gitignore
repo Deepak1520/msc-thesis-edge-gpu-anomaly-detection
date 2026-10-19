@@ -1,4 +1,15 @@
+# data: never commit telemetry; only the dataset README is tracked
 data/*
-!data/docs/
-data/docs/*
-!data/docs/README.md
+!data/raw/
+data/raw/*
+!data/raw/docs/
+data/raw/docs/*
+!data/raw/docs/README.md
+
+# python / jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# office lock files
+~$*

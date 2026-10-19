@@ -1,0 +1,25 @@
+# Preprocessing settings (filled in during the sprint, 19-22 Oct 2026).
+# Every value used by the pipeline lives here, so the Methodology chapter can cite one file.
+
+sampling_interval_min: 10
+window:
+  length_min: 60          # proposal + paper; to be confirmed with supervisor
+  stride_min: 10
+
+t0_detector:
+  expected_interval_s: 600
+  gap_threshold_s: 3000   # paper's scrapeCountDrop setting
+  gpu_present_below: 0.5  # GPU rows fall below this fraction of expected...
+  os_present_above: 0.8   # ...while OS rows stay above this fraction
+
+labels:
+  pre_failure_h: 8        # paper: 48-window lookback
+  near_incident_h: 24
+
+split:
+  train_fraction: 0.8     # chronological, per node, normal windows only
+
+excluded_files:
+  - ggpu142_2025-03-15_unknown-error-possibly-nongpu   # no matching incident (see 02_provenance_audit)
+
+seed: 42

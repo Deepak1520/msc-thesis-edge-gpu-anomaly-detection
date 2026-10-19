@@ -2,10 +2,11 @@
 Batch-decompress all .bz2 files in a folder (e.g. the GWDG telemetry
 folder full of *_tidy.csv.bz2 files).
 
-Usage:
-    python batch_unbz2.py "C:\\Personal\\19052367\\...\\telemetry"
-    python batch_unbz2.py "C:\\...\\telemetry" --out "C:\\...\\telemetry_extracted"
-    python batch_unbz2.py "C:\\...\\telemetry" --keep   # keep the .bz2 originals (default)
+Usage (from the repo root):
+    python src/unzip.py data/raw/telemetry --out data/extracted
+
+Without --out, files go to an 'extracted' subfolder of the source folder.
+The .bz2 originals are always kept.
 
 Each file.csv.bz2 becomes file.csv in the output folder.
 """

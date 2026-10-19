@@ -1,0 +1,14 @@
+# exploration and preprocessing
+pandas>=3.0
+numpy>=2.0
+matplotlib>=3.9
+pyarrow>=17.0        # parquet files in data/interim and data/processed
+pyyaml>=6.0          # config/*.yaml
+ipykernel
+
+# models (RQ1-RQ3)
+scikit-learn>=1.5    # Isolation Forest, RobustScaler
+
+# Dense Autoencoder + TFLite quantization (RQ1-RQ3) need TensorFlow, which has no
+# Python 3.14 build yet. Install it in a separate Python 3.12 venv when modelling starts:
+#   tensorflow>=2.17

@@ -8,7 +8,7 @@ threshold. t0 is defined as the LAST GOOD scrape timestamp immediately
 before the gap (not the moment the gap ends).
 
 Usage:
-    from scrape_count_drop import detect_scrape_collapse
+    from src.t0_detector import detect_scrape_collapse
 
     result = detect_scrape_collapse("path/to/incident_tidy.csv")
     print(result)
@@ -90,7 +90,9 @@ def detect_scrape_collapse(
 
 
 if __name__ == "__main__":
-    # Quick self-test against the mock file with a known injected gap.
-    result = detect_scrape_collapse("C:\Personal\data\extracted\ggpu121_2025-02-10_gpu-error_tidy.csv")
+    # Quick run on one incident file (python -m src.t0_detector).
+    from src.paths import EXTRACTED
+
+    result = detect_scrape_collapse(str(EXTRACTED / "ggpu121_2025-02-10_gpu-error_tidy.csv"))
     print("Detected collapse(s):")
     print(result.to_string(index=False))

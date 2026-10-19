@@ -1,0 +1,193 @@
+**Master’s Thesis - Deepak Budha**
+
+Email: [deepak.budha@stud.uni-goettingen.de](mailto:deepak.budha@stud.uni-goettingen.de)
+Topic: Lightweight AI for Detecting Irregular Behavior in Device Logs
+
+Supervisor: Michael B.Khani ([michael.bkhani@uni-goettingen.de](mailto:michael.bkhani@uni-goettingen.de))
+
+1.Reviewer: Prof. Dr. Julian Kunkel
+2.Reviewer:
+
+Registration:
+Submission:
+
+Gitlab Repo:
+Big-Blue-Button: [https://meet.academiccloud.de/gl/rooms/mic-zxt-jdb-vip](https://pad.gwdg.de/_link?url=https%3A%2F%2Fmeet.academiccloud.de%2Fgl%2Frooms%2Fmic-zxt-jdb-vip&note=Etgms5l1RayhbrPnIm64EA)
+Matrix Room:
+Thesis Sharelatex:
+
+**Meetings**
+
+**Status Update 30.09.2026**
+
+- Literature review table completed: 6 papers (Lu et al. 2026 survey; Borghesi et al. 2019 AICAS; Borghesi et al. 2019 AAAI; Bidollahkhani, Nordsiek & Kunkel 2026 anchor paper; Liu, Ting & Zhou 2008 Isolation Forest; Sun et al. 2026 EPC-TinyAD), in the format Michael requested (Study/citation, Domain/Data, Method, Key Findings, Limitation and Gap).
+
+- Finalized proposal's Research Questions, for reference (see thesis_proposal.pdf, Material and Methods):
+
+  - RQ1: Isolation Forest vs. Dense Autoencoder on GWDG GPU telemetry — detection quality (precision, recall, F1, lead time) and resource footprint (size, latency, memory) before compression.
+
+  - RQ2: Effect of quantization/pruning on each baseline candidate — can they meet edge-representative resource profiles without unacceptable loss of detection quality.
+
+  - RQ3: Resulting trade-off curve between detection performance and resource efficiency across models and compression levels — does the pre-compression ranking still hold after compression.
+
+  - RQ4: Does detecting locally, on-node, offer a practical advantage over centralized detection when the monitoring pipeline itself is degrading? Rationale: GPU detachments degrade the very monitoring pipeline a centralized detector depends on, connecting the compression work (RQ1–RQ3) back to the motivating failure scenario.
+
+- Jonathan raised follow-up questions on RQ4's "on-node vs. centralized" argument: exact mechanism of monitoring-pipeline degradation (local exporter losing the GPU vs. transport-path failure); how an on-node detector's alert reaches a human when the reporting path is also degraded; justification for local vs. centralized processing.
+
+- Open item for RQ4 — to resolve with Michael: whether on-node detection's advantage should be framed as "detects before the pipeline degrades" (a lead-time race) rather than "still works despite degradation"; and confirming the scope boundary that RQ4/Phase 3 measures detection quality under degraded input, not whether the alert reliably reaches a human when the reporting path is also down.
+
+- Open item for RQ2 — to resolve with Michael: quantization/pruning don't apply to Isolation Forest the same way they do to the Dense Autoencoder (no weights to compress), so an operational definition is needed (e.g., tree-count/depth reduction as the pruning analog) before RQ2's grid can treat every baseline candidate consistently.
+
+- Agenda for 01.10.2026 meeting with Michael: resolve the two open items above, confirm RQ4's scope/ambition level, then move into methodology and data preprocessing.
+
+**Status Update 10.08.2026**
+
+**Context — four related data files**
+
+- **incident_events.csv — GWDG’s full operator log: 69 incidents, 26 nodes. Ground truth dates/descriptions. Exists independently of telemetry.**
+
+- **manifest.csv — catalog of the 21 files ****actually extracted**** (16 incident + 5 healthy reference), covering only 7 nodes.**
+
+- **meta.json**** — per-file cleaning record (which metrics were kept, ****raw→tidy**** lineage).**
+
+- **telemetry CSV — the actual rows (****timeUtc****, node, metric, value, ****gpu****, device…), long format.**
+
+**Key figures from incident_events.csv EDA**
+
+- **Date range: 2025-01-07 to 2026-02-12 (401 days)**
+
+- **Total incidents: 69, across 44 unique incident days**
+
+- **Unique nodes: 26, of which 11 have multiple incidents, Telemetry available for 7 unique ****nodes(****3 nodes have multiple incidents, 4 have single incidents)**
+
+- **Unique categories: 8; ****gpu**** error/problem (31) and ****gpu**** fell off bus (24) are the most frequent, Telemetry available for 3 categories: ****gpu**** error/****problem(****5/31), ****gpu**** fell off bus (7/24), ****gpu**** ****lost(****3/3)**
+
+- **why ****other categories were**** excluded like “****gpu**** unknown” which had 5 incidents?**
+
+- **Nodes with multiple incidents: 11 nodes account for 54 of 69 total incidents. On average, ~79% of a repeat node’s incidents share the same category — most nodes lean toward one dominant failure type rather than a mix.**
+
+- **Telemetry-covered repeat nodes specifically: average same-category consistency is higher, ~87% (2 of the 3 covered nodes are 100% single-category).**
+
+**Same-day clustering pattern**
+
+- **15 dates had multiple different nodes reporting incidents simultaneously, totaling 40 incidents**
+
+- **On 30 of those 40 (75%), the same category appeared across the different nodes on that ****date — most frequently**** ****gpu**** error/problem (20) and ****gpu**** fell off bus (17)**
+
+**Question for next meeting**
+
+- **ggpu142 has 6 telemetry files but only 5 logged incidents — the extra file (2025-03-15_unknown-error-possibly-nongpu) has no matching row in incident_events.csv**
+
+- **what determined which node/categories/incidents were selected for telemetry data?**
+
+- **node_ada68b80182e (15 incidents) and node_95799a17101c (11 incidents) together account for 26 incidents — nearly half of all repeat-node incidents — and neither has telemetry.**
+
+- **some nodes had 15 incidents but were excluded**
+
+**Status Update 30.07.2026 - x**
+
+**Agenda**
+
+- Did you review recent literature on log anomaly detection for distributed systems and HPC environments?
+
+- please write your findings here in points
+
+- Statistical and rule-based methods
+
+- Classical machine learning (e.g., Isolation Forest, One-Class SVM)
+
+- Deep learning methods (LSTM, GRU, Transformers, Autoencoders)
+
+- Online Anomaly Detection in HPC Systems([https://arxiv.org/pdf/1902.08447](https://pad.gwdg.de/_link?url=https%3A%2F%2Farxiv.org%2Fpdf%2F1902.08447&note=Etgms5l1RayhbrPnIm64EA))
+
+- Trains one sparse autoencoder per compute node on ~2 months of normal-only telemetry (166 features: power, temp, frequency, GPU usage, etc.) — no fault labels needed, since only healthy data is used for training.
+
+- Core idea: under healthy conditions, features are correlated in predictable ways (e.g. power ↔ workload, temperature ↔ clock frequency); autoencoder learns these correlations, and anomalies are flagged when reconstruction error rises because the correlations no longer hold.
+
+- Design finding relevant to us: per-node models outperformed one shared/generic model (14.54 vs. 6.29 anomalous-period error) — something we could test as a comparison experiment on our 7 GPU nodes: one model per node vs. one model for all nodes.
+
+- achieve lightweight deployment through a small architecture and dedicated hardware, not through quantization or pruning — our method could differ by applying compression (quantization/pruning) to a heavier model
+
+- Resource-efficient AI techniques (quantization, pruning, TinyML)
+
+- Quantization reduces the precision of each number in the model (fewer bits per weight); pruning reduces the number of weights in the model (removing near-zero/unimportant connections). Both shrink the model, but they save different resources — quantization mainly speeds up computation and cuts memory/energy, while pruning mainly shrinks storage size.
+
+- Lightweight and Energy-Aware Intrusion Detection for Industrial IoT Using TinyML and Edge AI(https://www.mdpi.com/2079-9292/15/13/2879)
+
+- Intrusion detection model runs at 12–18ms per sample on a GPU workstation but 120–180ms per sample on a Raspberry Pi 4, a roughly 10x slowdown that motivates compression techniques like quantization and pruning rather than direct deployment of the full model.
+
+- Lossless Reconstruction of Convolutional Neural Network for Channel-Based Network Pruning([https://pmc.ncbi.nlm.nih.gov/articles/PMC9959087/](https://pad.gwdg.de/_link?url=https%3A%2F%2Fpmc.ncbi.nlm.nih.gov%2Farticles%2FPMC9959087%2F&note=Etgms5l1RayhbrPnIm64EA))
+
+- Compressing a large model produces better results than a well-designed small model with the same resources.
+
+- Experimental implementation of a neural network optical channel equalizer in restricted hardware using pruning and quantization([https://www.nature.com/articles/s41598-022-12563-0](https://pad.gwdg.de/_link?url=https%3A%2F%2Fwww.nature.com%2Farticles%2Fs41598-022-12563-0&note=Etgms5l1RayhbrPnIm64EA))
+
+- Quantization and pruning together reduced model complexity by 78.34% (from 75.96M to 16.45M BOPs) and model size by 87.12% (from 201.4 KB to 25.9 KB), while costing only about 4% accuracy — but most of that complexity reduction came from quantization alone, which by itself accounted for a 69.3% drop (75.96M → 23.32M BOPs), with pruning contributing comparatively little on top.
+
+- A point which can be highlighted here is that:
+
+- Most state-of-the-art deep learning models achieve strong detection performance but require significant computational resources, making them less suitable for deployment on edge devices.
+
+- The focus of the thesis will remain on evaluating the trade-off between anomaly detection performance and resource efficiency, then, in case we had time or you are interested, we can propose a novel machine learning algorithm.
+
+- The edge deployment should demonstrate the feasibility of lightweight inference under constrained hardware resources, using metrics such as model size, inference latency, memory consumption, and CPU utilization.
+
+**Todo:**
+
+- Start exploring the GWDG HPC Log Dataset, initial tasks include:
+
+- Understanding the log structure and available metadata.
+
+- Identifying available event types and timestamps.
+
+- Investigating whether anomaly labels are explicitly provided or need to be derived.
+
+- Assessing preprocessing requirements for feature extraction.
+
+**Status Update 20.07.2026**
+
+Company data ruled out: it is customer-owned (not company owned), so it cannot be used as the basis for a published thesis due to legal/IP constraints.
+
+CWRU Bearing Dataset was considered as a fallback but deprioritized per supervisor feedback: it provides pre-processed, low-dimensional features (not raw device logs) and is heavily saturated in existing literature, limiting novelty.
+
+Decision: proceeding with the GWDG HPC Log Dataset -> [https://zenodo.org/records/19052367](https://pad.gwdg.de/_link?url=https%3A%2F%2Fzenodo.org%2Frecords%2F19052367&note=Etgms5l1RayhbrPnIm64EA)
+
+- Aligns directly with the approved thesis topic (device log anomaly detection)
+
+- Plan: log preprocessing -> semi-complex/hybrid feature engineering -> lightweight anomaly detection model -> edge deployment comparison
+
+- Naturally supports TinyML/compression techniques
+
+**Status Update 02.07.2026**
+
+Building a ML model, running it on edge device (light enough) to detect irrigular behavior of nodes. To prevent, detect or predict behavior baseline.
+
+Gartner Hype Cycle Chart 2025
+
+High-level map:
+
+- Existing anomaly detection methods (heuristics and ML-based predictive maintenace systems),
+
+- Define the application scenario -> available datasets (sensory-telemetry or log files)
+
+- You can select a custom dataset,
+
+- Alternative option: GWDG HPC dataset is also available -> [https://zenodo.org/records/19052367](https://pad.gwdg.de/_link?url=https%3A%2F%2Fzenodo.org%2Frecords%2F19052367&note=Etgms5l1RayhbrPnIm64EA)
+
+- Implementation of the existing anomaly detection or pdm models
+
+- getting the baseline
+
+- Investigate and applying the resource-efficient AI techniques
+
+- Comparison and prototyping the edge deployment
+
+Todo:
+
+- Please check the relevant topics and studies, possibility of choosing your own dataset and in case you are interested in an specific application.
+
+CONFIDENTIAL - PERSONAL DATA
+
+CONFIDENTIAL - PERSONAL DATA
+
+CONFIDENTIAL - PERSONAL DATA
