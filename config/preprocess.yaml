@@ -23,3 +23,6 @@ excluded_files:
   - ggpu142_2025-03-15_unknown-error-possibly-nongpu   # no matching incident (see 02_provenance_audit)
 
 seed: 42
+
+monitoring_outages:   # cluster-wide, all jobs silent on several nodes; not node failures
+  - {start: "2026-01-20 04:50", end: "2026-01-21 12:40"}
